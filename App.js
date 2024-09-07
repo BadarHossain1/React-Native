@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
-import { View, Text, Image, ImageBackground, Pressable, Modal, ActivityIndicator, Alert } from "react-native";
+import { View, Text, Image, ImageBackground, Pressable, Modal, ActivityIndicator, Alert, StyleSheet } from "react-native";
 import { Button, ScrollView } from "react-native";
 import Greet from "./Components/Greet";
 
@@ -8,7 +8,7 @@ const logoImg = require("./assets/adaptive-icon.png");
 
 export default function App() {
   const [modalVisible, setModalVisible] = useState(false);
-  return <View style={{ flex: 1, backgroundColor: "plum", padding: 50 }}>
+  return <View style={styles.container}>
     <StatusBar backgroundColor="green" barStyle="light-content" hidden></StatusBar>
     {/* Loading */}
     <ActivityIndicator></ActivityIndicator>
@@ -46,7 +46,7 @@ export default function App() {
       <Image source={{ uri: "https://picsum.photos/200" }} style={{ width: 300, height: 300 }}></Image>
 
       <ImageBackground source={{ uri: "https://picsum.photos/200" }} style={{ flex: 1 }}>
-        <Text style={{ color: "white", fontSize: 30 }}>Hello</Text>
+        <Text className="text-green-500 border-2 p-10 font-extrabold">Hello</Text>
       </ImageBackground>
       <Button title="Press here" onPress={() => console.log("Ouch!!!")} color="midnightblue" disabled></Button>
 
@@ -77,3 +77,7 @@ export default function App() {
 
   </View >
 }
+
+const styles = StyleSheet.create({
+  container: { flex: 1, backgroundColor: "skyblue", padding: 50 },
+})
