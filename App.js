@@ -1,4 +1,4 @@
-import { View, Text, Image, ImageBackground } from "react-native";
+import { View, Text, Image, ImageBackground, Pressable } from "react-native";
 import { Button, ScrollView } from "react-native";
 
 const logoImg = require("./assets/adaptive-icon.png");
@@ -18,7 +18,17 @@ export default function App() {
       <ImageBackground source={{ uri: "https://picsum.photos/200" }} style={{ flex: 1 }}>
         <Text style={{ color: "white", fontSize: 30 }}>Hello</Text>
       </ImageBackground>
-      <Button title="Press here" onPress={()=> console.log("Ouch!!!")} color="midnightblue" disabled></Button>
+      <Button title="Press here" onPress={() => console.log("Ouch!!!")} color="midnightblue" disabled></Button>
+
+      {/* Pressable has other features like onPress, check em out */}
+      <Pressable onPress={()=> console.log("Image Pressed")}> 
+        <Image source={{ uri: "https://picsum.photos/200" }} style={{ width: 300, height: 300 }}></Image>
+
+      </Pressable>
+
+      <Pressable >
+        <Text> Badar Hossain In the heart of a peaceful village, nestled between rolling hills and verdant forests, life moved at a slower, more meaningful pace. Each day began with the golden sunrise that bathed the landscape in warm hues,</Text>
+      </Pressable>
     </ScrollView>
 
   </View >
