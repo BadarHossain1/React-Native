@@ -1,10 +1,40 @@
-import { View, Text, Image, ImageBackground, Pressable } from "react-native";
+import { StatusBar } from "expo-status-bar";
+import { useState } from "react";
+import { View, Text, Image, ImageBackground, Pressable, Modal, ActivityIndicator, Alert } from "react-native";
 import { Button, ScrollView } from "react-native";
+import Greet from "./Components/Greet";
 
 const logoImg = require("./assets/adaptive-icon.png");
 
 export default function App() {
+  const [modalVisible, setModalVisible] = useState(false);
   return <View style={{ flex: 1, backgroundColor: "plum", padding: 50 }}>
+    <StatusBar backgroundColor="green" barStyle="light-content" hidden></StatusBar>
+    {/* Loading */}
+    <ActivityIndicator></ActivityIndicator>
+    <ActivityIndicator size="large"></ActivityIndicator>
+    <ActivityIndicator size="large" color="midnightblue"></ActivityIndicator>
+    <ActivityIndicator size="large" color="midnightblue" animating={true}></ActivityIndicator>
+
+    <Button title="Alert" onPress={() => Alert.alert("Button Pressed")}></Button>
+    <Button title="Alert" onPress={() => Alert.alert("Button Pressed", "Ouch that hurts!!", [
+      {
+        text: "Cancel",
+        onPress: () => console.log("Cancel Pressed"),
+      },
+      {
+        text: "Ok",
+        onPress: () => console.log("Ok Bye"),
+      }
+    ])}></Button>
+
+
+    <Greet name={"Badar"}></Greet>
+
+
+
+
+    
     <ScrollView>
       <Text><Text style={{ color: 'yellow' }}>Hello</Text> Badar Hossain In the heart of a peaceful village, nestled between rolling hills and verdant forests, life moved at a slower, more meaningful pace. Each day began with the golden sunrise that bathed the landscape in warm hues, awakening the fields of crops and the forests surrounding the village. Farmers, with weathered hands and hopeful hearts, tended to their land, knowing that the earth would reward their labor with abundant harvests. Children ran barefoot through the open fields, their laughter echoing like a song that harmonized with the calls of birds in the sky.
 
@@ -29,6 +59,20 @@ export default function App() {
       <Pressable >
         <Text> Badar Hossain In the heart of a peaceful village, nestled between rolling hills and verdant forests, life moved at a slower, more meaningful pace. Each day began with the golden sunrise that bathed the landscape in warm hues,</Text>
       </Pressable>
+
+      <Button title="Modal Open" onPress={()=> setModalVisible(true)} color="midnightblue">
+
+      
+      </Button>
+
+
+      {/* onRequestClose is for back button in android */}
+      <Modal visible={modalVisible} onRequestClose={() => setModalVisible(false)} animationType="slide" presentationStyle="formSheet">
+        <View style={{backgroundColor: 'lightblue' , flex: 1, padding:60}}>
+          <Text>Modal Content here</Text>
+          <Button title="Close Modal" color="black" onPress={() => setModalVisible(false)}></Button>
+        </View>
+      </Modal>
     </ScrollView>
 
   </View >
