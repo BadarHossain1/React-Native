@@ -9,6 +9,10 @@ const logoImg = require("./assets/adaptive-icon.png");
 export default function App() {
   const [modalVisible, setModalVisible] = useState(false);
   return <View style={styles.container}>
+    <View style={[styles.darkMode]}>
+      <Text style={[styles.darkModeText]}>Style Inheritance </Text> 
+      {/* There is no inheritance in styles here like CSS inheritance. So, we have to specify the color for each element.  */}
+    </View>
     <StatusBar backgroundColor="green" barStyle="light-content" hidden></StatusBar>
     {/* Loading */}
     <ActivityIndicator></ActivityIndicator>
@@ -34,7 +38,7 @@ export default function App() {
 
 
 
-    
+
     <ScrollView>
       <Text><Text style={{ color: 'yellow' }}>Hello</Text> Badar Hossain In the heart of a peaceful village, nestled between rolling hills and verdant forests, life moved at a slower, more meaningful pace. Each day began with the golden sunrise that bathed the landscape in warm hues, awakening the fields of crops and the forests surrounding the village. Farmers, with weathered hands and hopeful hearts, tended to their land, knowing that the earth would reward their labor with abundant harvests. Children ran barefoot through the open fields, their laughter echoing like a song that harmonized with the calls of birds in the sky.
 
@@ -51,7 +55,7 @@ export default function App() {
       <Button title="Press here" onPress={() => console.log("Ouch!!!")} color="midnightblue" disabled></Button>
 
       {/* Pressable has other features like onPress, check em out */}
-      <Pressable onPress={()=> console.log("Image Pressed")}> 
+      <Pressable onPress={() => console.log("Image Pressed")}>
         <Image source={{ uri: "https://picsum.photos/200" }} style={{ width: 300, height: 300 }}></Image>
 
       </Pressable>
@@ -60,19 +64,22 @@ export default function App() {
         <Text> Badar Hossain In the heart of a peaceful village, nestled between rolling hills and verdant forests, life moved at a slower, more meaningful pace. Each day began with the golden sunrise that bathed the landscape in warm hues,</Text>
       </Pressable>
 
-      <Button title="Modal Open" onPress={()=> setModalVisible(true)} color="midnightblue">
+      <Button title="Modal Open" onPress={() => setModalVisible(true)} color="midnightblue">
 
-      
+
       </Button>
 
 
       {/* onRequestClose is for back button in android */}
       <Modal visible={modalVisible} onRequestClose={() => setModalVisible(false)} animationType="slide" presentationStyle="formSheet">
-        <View style={{backgroundColor: 'lightblue' , flex: 1, padding:60}}>
+        <View style={{ backgroundColor: 'lightblue', flex: 1, padding: 60 }}>
           <Text>Modal Content here</Text>
           <Button title="Close Modal" color="black" onPress={() => setModalVisible(false)}></Button>
         </View>
       </Modal>
+
+
+      <Text className="text-red-600 p-10 border-2 border-solid bg-green-200 text-center rounded-xl shadow-2xl shadow-yellow-500 ">Hello Box Model</Text>
     </ScrollView>
 
   </View >
@@ -80,4 +87,14 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: "skyblue", padding: 50 },
+  darkMode: {
+    backgroundColor: "black",
+    
+  
+  },
+  darkModeText: {
+    color: 'white'
+  }
+
+
 })
