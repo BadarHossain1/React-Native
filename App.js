@@ -3,12 +3,14 @@ import { useState } from "react";
 import { View, Text, Image, ImageBackground, Pressable, Modal, ActivityIndicator, Alert, StyleSheet } from "react-native";
 import { Button, ScrollView } from "react-native";
 import Greet from "./Components/Greet";
+import Box from "./Components/Box";
 
 const logoImg = require("./assets/adaptive-icon.png");
 
 export default function App() {
   const [modalVisible, setModalVisible] = useState(false);
   return <View style={styles.container}>
+
     <View style={[styles.darkMode]}>
       <Text style={[styles.darkModeText]}>Style Inheritance </Text> 
       {/* There is no inheritance in styles here like CSS inheritance. So, we have to specify the color for each element.  */}
@@ -80,6 +82,13 @@ export default function App() {
 
 
       <Text className="text-red-600 p-10 border-2 border-solid bg-green-200 text-center rounded-xl shadow-2xl shadow-yellow-500 ">Hello Box Model</Text>
+
+
+      <View className="flex">
+          <Box style={{backgroundColor: 'red', flex:1 , alignSelf: 'center', flexBasis: 140}}>Box1</Box>
+          <Box style={{backgroundColor: 'blue', flex:3 , alignSelf: 'flex-start', }}>Box2</Box>
+          <Box style={{backgroundColor: 'blue', flex:3 , alignSelf: 'stretch',}}>Box3</Box>
+      </View>
     </ScrollView>
 
   </View >
@@ -98,3 +107,12 @@ const styles = StyleSheet.create({
 
 
 })
+
+
+//Flex Basis is basically height for flex items. Initial flex height
+// Flex grow is how much space it can take up
+// Flex shrink is how much space it can give or when there is overflow, it can shrink to adjust to the space
+
+// When flex is set to positive number, it sets flex basis to 0 and flex shrink to 1.
+
+{/* There is no inheritance in styles here like CSS inheritance. So, we have to specify the color for each element.  */}
